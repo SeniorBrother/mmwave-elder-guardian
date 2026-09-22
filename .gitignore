@@ -1,0 +1,60 @@
+# ---- Keil MDK (STM32) ----
+*.o
+*.obj
+*.axf
+*.elf
+*.htm
+*.lnp
+*.lst
+*.map
+*.dep
+*.bak
+*.iex
+*.sct
+Listings/
+Objects/
+*.uvgui.*
+*.uvguix.*
+*.uvopt
+*.uvoptx.bak
+RTE/
+
+# ---- STM32CubeMX / CubeIDE ----
+*.ioc.bak
+Debug/
+Release/
+.settings/
+.cproject
+.project
+mx.*
+
+# ---- ESP-IDF ----
+build/
+sdkconfig.old
+managed_components/
+dependencies.lock
+*.pyc
+
+# ---- Qt / host-app ----
+build-*/
+*.user
+*.user.*
+*.autosave
+*.pro.user
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+Makefile*
+
+# ---- generic ----
+.vscode/
+.idea/
+*.log
+*.tmp
+*.bin
+*.hex
+*.exe
+firmware/common/test/run_tests
+!tools/**/*.bin
+.DS_Store
+Thumbs.db

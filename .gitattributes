@@ -1,0 +1,12 @@
+# 统一换行符，避免跨平台问题
+* text=auto
+
+# Shell 脚本必须 LF，否则 WSL/Linux bash 执行报错
+*.sh text eol=lf
+
+# 二进制文件不做换行转换
+*.png binary
+*.jpg binary
+*.bin binary
+*.hex binary
+*.pdf binary
