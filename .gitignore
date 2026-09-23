@@ -54,7 +54,7 @@ Makefile*
 *.bin
 *.hex
 *.exe
-firmware/common/test/run_tests
+project/firmware/common/test/run_tests
 !tools/**/*.bin
 .DS_Store
 Thumbs.db
