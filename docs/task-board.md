@@ -17,19 +17,19 @@
 - [ ] 🤝 建 `dev` 分支，约定 PR 交叉评审 + Conventional Commits
 - [x] 🤝 统一环境：WSL/gcc 跑通 `project/firmware/common/test/build_and_test.sh`（基线 62 项全过）
 - [x] 🤝 认领切片：甲=A / 乙=B
-- [ ] 🅰 装齐工具链：STM32CubeMX + Keil MDK5（+ ST-Link 驱动 + F1 pack）
-- [ ] 🅱 装齐工具链：STM32CubeMX + Keil MDK5（+ ESP-IDF 备用）
+- [ ] 🅰 装齐工具链：Keil MDK5 + 标准库模板（STM32F10x_StdPeriph_Lib V3.5）+ ST-Link 驱动（CubeMX 可选，仅作引脚/时钟规划）
+- [ ] 🅱 装齐工具链：Keil MDK5 + 标准库模板（+ ESP-IDF 备用）
 
 ---
 
 ## M1 基础（固件起框架）★汇合：点灯+printf+FreeRTOS 跑通
 
-### 🅰 切片甲（详见 `project/firmware/stm32f103/README.md`）
-- [ ] 固件：CubeMX 生成 STM32F103RCT6 工程（HSE 8M→72M、SWD、FreeRTOS CMSIS_V2）
+### 🅰 切片甲（详见 `project/firmware/stm32f103/README.md`，**标准库 SPL，不用 HAL**）
+- [ ] 固件：用标准库模板建 STM32F103RCT6 工程（`STM32F10X_HD`、HSE 8M→72M）
 - [ ] 固件：common + BSP 纳入 Keil，编译通过、ST-Link 下载成功
 - [ ] 固件：PA8 点灯 + USART1 printf 日志（板载 CH340/Type-C）
-- [ ] 固件：FreeRTOS 任务调度跑通（osDelay 周期打印）
-- [ ] 固件：雷达 USART3(PB10/PB11) 串口成帧接收，打印原始帧（帧头 0x53 0x59）
+- [ ] 固件：移植 FreeRTOS 内核，任务调度跑通（vTaskDelay 周期打印）
+- [ ] 固件：雷达 USART3(PB10/PB11) 接收中断成帧，打印原始帧（帧头 0x53 0x59）
 
 ### 🅱 切片乙
 - [ ] 固件：LVGL v8.3 移植 + ILI9341/XPT2046 触控点亮（SPI1）

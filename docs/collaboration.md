@@ -93,7 +93,7 @@
 1. 两人一起**冻结 common 契约**：过 `guardian_data.h`、`modbus-map.md`、`motion_link.h`，确认字段无异议。
 2. 认领切片：甲=生命体征+OneNet云端远程，乙=环境安全+LVGL本地交互+RS485本地总线（可对调）。
 3. 各自把固件侧起起来（详见 `project/firmware/stm32f103/README.md`）：
-   - 甲：CubeMX 生成工程跑通点灯(PA8)/printf(USART1)/FreeRTOS/雷达 USART3 成帧。
+   - 甲：用**标准库模板工程**（不用 HAL）跑通点灯(PA8)/printf(USART1)/FreeRTOS/雷达 USART3 成帧。
    - 乙：LVGL 移植 + 传感器驱动（DHT11/MLX90614/MQ7）。
 4. 环境统一：都用 WSL 或本机 gcc 跑 `build_and_test.sh`，约定"改 common 必过测试"。
 5. 建 `dev` 分支与 PR 交叉评审流程，跑通第一次协作合并。
@@ -104,4 +104,4 @@
   ```bash
   cd project/firmware/common/test && bash build_and_test.sh
   ```
-- 固件：Keil MDK5 + STM32CubeMX(STM32) / ESP-IDF(ESP32-S3、ESP32)。两人都装 CubeMX+Keil。QT5(Qt Creator) 待后期上位机阶段再装。
+- 固件：Keil MDK5 + **标准库(SPL V3.5)**(STM32，不用 HAL；CubeMX 仅作引脚/时钟规划，可选) / ESP-IDF(ESP32-S3、ESP32)。QT5(Qt Creator) 待后期上位机阶段再装。

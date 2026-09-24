@@ -18,7 +18,7 @@ STM32 / ESP32-S3 独居老人居家监护系统 —— 60G 毫米波雷达非接
 
 | 方案 | 主控 | 框架 | WiFi | OTA |
 |------|------|------|------|-----|
-| A | STM32F103RCT6 (256KB/48KB) | STM32CubeMX + Keil + HAL + FreeRTOS + LVGL | 外挂 ESP8266 | 自建 IAP Bootloader + W25Q64 缓存 |
+| A | STM32F103RCT6 (256KB/48KB) | Keil MDK5 + **标准库(SPL V3.5)** + FreeRTOS + LVGL（CubeMX 仅作引脚/时钟规划，可选） | 外挂 ESP8266 | 自建 IAP Bootloader + W25Q64 缓存 |
 | B | ESP32-S3 (N16R8) | ESP-IDF v5.x + FreeRTOS + LVGL | 内置 WiFi/BLE | 原生双分区 + 自动回滚 |
 
 两方案共用 `project/firmware/common/` 业务层（雷达协议、摔倒算法、报警规则、OneNet JSON、Modbus RTU 从站栈、motion_link），仅 BSP 分芯片实现。
@@ -62,7 +62,7 @@ bash build_and_test.sh
 
 ## 技术栈
 
-C · FreeRTOS · LVGL v8.3 · STM32 HAL / ESP-IDF · MQTT · OneNet · Modbus RTU · QT5 (QtCharts / QtSerialBus)
+C · FreeRTOS · LVGL v8.3 · STM32 标准库(SPL) / ESP-IDF · MQTT · OneNet · Modbus RTU · QT5 (QtCharts / QtSerialBus，后期保留)
 
 ## 扩展：移动版（移动底盘 + AI 语音交互）
 

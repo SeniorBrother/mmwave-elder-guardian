@@ -8,8 +8,8 @@
 
 | 阶段 | 目标 | 关键动作 | 提交示例 |
 |------|------|----------|----------|
-| 0 环境 | 工具链就绪 | CubeMX+Keil(方案A)；HSE8M→72M、SWD、点灯(PA8)+USART1 printf | `chore: init toolchain` |
-| 1 FreeRTOS | RTOS 调度 | CMSIS_V2，任务里 osDelay 周期打印 | `feat(rtos): 任务调度` |
+| 0 环境 | 工具链就绪 | 标准库(SPL)模板工程+Keil（`STM32F10X_HD`）；HSE8M→72M、点灯(PA8)+USART1 printf | `chore: init toolchain` |
+| 1 FreeRTOS | RTOS 调度 | 移植 FreeRTOS 内核，`xTaskCreate`+`vTaskDelay` 周期打印 | `feat(rtos): 任务调度` |
 | 2 LVGL+触控 | 界面显示 | 移植 LVGL，跑通 2.8寸 ILI9341 + XPT2046 触摸按钮 | `feat(lvgl): 移植LVGL+触控` |
 | 3 传感器 | 环境采集 | DHT11(PB9) → MLX90614(I2C1 扫0x5A) → MQ7(PA1 预热+基准) | `feat(sensor): 传感器驱动` |
 | 4 雷达 | 生命体征 | USART3(PB10/11) 看 53 59 帧 → `radar_proto` 解析；收不到心率发使能命令 | `feat(radar): R60ABD1协议解析` |
@@ -40,6 +40,6 @@
 
 ## 下一步（需硬件在手）
 
-1. 用 CubeMX 生成方案A 工程（详见 `project/firmware/stm32f103/README.md`），把 `project/firmware/common/` 纳入 Keil，逐阶段填 BSP。
+1. 用**标准库模板工程**起步（详见 `project/firmware/stm32f103/README.md`，不用 HAL），把 `project/firmware/common/` 纳入 Keil，逐阶段填 BSP。
 2. 按阶段 0→8 逐个模块点亮，每步用 USART1 串口日志验证。
 3. 多房间部署时，为每个节点设不同 Modbus 地址（保持寄存器 0x0000）。
